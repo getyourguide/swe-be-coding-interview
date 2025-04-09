@@ -20,3 +20,5 @@ updates:
       day: sunday
       timezone: Europe/Berlin
     open-pull-requests-limit: 20
+    registries:
+      - maven-codeartifact
