@@ -13,7 +13,7 @@ public class StatisticsController {
     private final StatisticsService statisticsService;
 
     @GetMapping("/stats/suppliers")
-    public ResponseEntity<List<Object[]>> suppliersSearch() {
+    public ResponseEntity<List<Object[]>> supplierStats() {
         return ResponseEntity.ok(statisticsService.getSupplierStats());
     }
 }
