@@ -1,6 +1,5 @@
 package com.getourguide.interview.service;
 
-import com.getourguide.interview.controller.SupplierController;
 import com.getourguide.interview.dto.ActivityDto;
 import com.getourguide.interview.entity.Activity;
 import com.getourguide.interview.repository.ActivityRepository;
@@ -14,7 +13,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class ActivityService {
     private final ActivityRepository activityRepository;
-    private final SupplierController supplierController;
+
     public List<ActivityDto> getActivities() {
         List<Activity> activities = activityRepository.findAll();
         List<ActivityDto> result = new ArrayList<>();
