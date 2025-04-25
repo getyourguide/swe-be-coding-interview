@@ -20,7 +20,7 @@ class ActivityServiceTest {
     void setup() {
         this.activityRepository = mock(ActivityRepository.class);
         this.supplierController = mock(SupplierController.class);
-        this.activityService = new ActivityService(activityRepository, supplierController);
+        this.activityService = new ActivityService(activityRepository);
     }
 
     @Test
