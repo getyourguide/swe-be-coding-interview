@@ -1,10 +1,4 @@
 version: 2
-registries:
-  maven-codeartifact:
-    type: maven-repository
-    url: https://getyourguide-130607246975.d.codeartifact.eu-central-1.amazonaws.com/maven/private/
-    username: "aws"
-    password: "${{secrets.CODEARTIFACT_AUTH_TOKEN}}"
 updates:
   - package-ecosystem: github-actions
     directory: /
@@ -20,5 +14,3 @@ updates:
       day: sunday
       timezone: Europe/Berlin
     open-pull-requests-limit: 20
-    registries:
-      - maven-codeartifact
