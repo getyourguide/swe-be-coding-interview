@@ -1,6 +1,8 @@
 package com.getourguide.interview.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -20,6 +22,7 @@ public class Supplier {
     private String zip;
     private String city;
     private String country;
-    @OneToMany(mappedBy = "supplier")
+    @OneToMany(mappedBy = "supplier", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Activity> activities;
 }
