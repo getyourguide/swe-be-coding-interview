@@ -1,7 +1,7 @@
 {
   "name": "GetYourGuide Backend Interview - Java 21 + Spring Boot",
   "image": "mcr.microsoft.com/devcontainers/java:21-jdk-bullseye",
-  
+
   "hostRequirements": {
     "cpus": 4,
     "memory": "8gb",
@@ -12,10 +12,18 @@
     "vscode": {
       "extensions": [
         "vscjava.vscode-java-pack",
-        "vmware.vscode-boot-dev-pack"
+        "vmware.vscode-boot-dev-pack",
+        "gabrielbb.vscode-lombok",
+        "vscjava.vscode-gradle",
+        "ms-vscode.vscode-json",
+        "redhat.vscode-yaml",
+        "ms-vscode.atom-keybindings"
       ],
       "settings": {
         "java.configuration.updateBuildConfiguration": "automatic",
+        "java.compile.nullAnalysis.mode": "automatic",
+        "spring-boot.ls.checkjvm": false,
+        "terminal.integrated.defaultProfile.linux": "bash",
         "debug.allowBreakpointsEverywhere": true
       }
     }
@@ -28,17 +36,20 @@
       "onAutoForward": "notify"
     },
     "5005": {
-      "label": "Java Debug Port",
-      "onAutoForward": "silent"
+      "label": "Debugger",
+      "onAutoForward": "openBrowser"
     }
   },
 
+  "postCreateCommand": "chmod +x ./gradlew && ./gradlew build --no-daemon --parallel",
+  "postStartCommand": "echo 'Codespace ready! Run ./gradlew bootRun to start the application'",
+
+  "remoteUser": "vscode",
+
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+
   "containerEnv": {
     "JAVA_TOOL_OPTIONS": "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
-  },
-
-  "postCreateCommand": "chmod +x ./gradlew",
-  "postStartCommand": "echo 'Codespace ready! Run ./gradlew bootRun to start the application'",
-  
-  "remoteUser": "vscode"
-} 
+  }
+}
