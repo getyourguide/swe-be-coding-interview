@@ -1,0 +1,55 @@
+{
+  "name": "GetYourGuide Backend Interview - Java 21 + Spring Boot",
+  "image": "mcr.microsoft.com/devcontainers/java:21-jdk-bullseye",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/gradle:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/git:1": {
+      "version": "latest"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "vmware.vscode-boot-dev-pack",
+        "gabrielbb.vscode-lombok",
+        "vscjava.vscode-gradle",
+        "ms-vscode.vscode-json",
+        "redhat.vscode-yaml",
+        "ms-vscode.atom-keybindings"
+      ],
+      "settings": {
+        "java.configuration.runtimes": [
+          {
+            "name": "JavaSE-21",
+            "path": "/usr/local/sdkman/candidates/java/current"
+          }
+        ],
+        "java.compile.nullAnalysis.mode": "automatic",
+        "spring-boot.ls.checkjvm": false,
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+
+  "forwardPorts": [8080],
+  "portsAttributes": {
+    "8080": {
+      "label": "Spring Boot Application",
+      "onAutoForward": "notify"
+    }
+  },
+
+  "postCreateCommand": "./gradlew build",
+  "postStartCommand": "echo 'Codespace ready! Run ./gradlew bootRun to start the application'",
+
+  "remoteUser": "vscode",
+  
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"
+  ]
+} 
