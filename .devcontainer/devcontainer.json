@@ -1,10 +1,6 @@
 {
   "name": "GetYourGuide Backend Interview - Java 21 + Spring Boot",
   "image": "mcr.microsoft.com/devcontainers/java:21-jdk-bullseye",
-  
-  "features": {
-    "ghcr.io/devcontainers/features/git:1": {}
-  },
 
   "customizations": {
     "vscode": {
@@ -18,12 +14,7 @@
         "ms-vscode.atom-keybindings"
       ],
       "settings": {
-        "java.configuration.runtimes": [
-          {
-            "name": "JavaSE-21",
-            "path": "/usr/local/sdkman/candidates/java/current"
-          }
-        ],
+        "java.configuration.updateBuildConfiguration": "automatic",
         "java.compile.nullAnalysis.mode": "automatic",
         "spring-boot.ls.checkjvm": false,
         "terminal.integrated.defaultProfile.linux": "bash"
