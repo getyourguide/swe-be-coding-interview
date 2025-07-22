@@ -1,6 +1,12 @@
 {
   "name": "GetYourGuide Backend Interview - Java 21 + Spring Boot",
   "image": "mcr.microsoft.com/devcontainers/java:21-jdk-bullseye",
+  
+  "hostRequirements": {
+    "cpus": 4,
+    "memory": "8gb",
+    "storage": "32gb"
+  },
 
   "customizations": {
     "vscode": {
@@ -30,7 +36,7 @@
     }
   },
 
-  "postCreateCommand": "chmod +x ./gradlew && ./gradlew build",
+  "postCreateCommand": "chmod +x ./gradlew && ./gradlew build --no-daemon --parallel",
   "postStartCommand": "echo 'Codespace ready! Run ./gradlew bootRun to start the application'",
 
   "remoteUser": "vscode"
