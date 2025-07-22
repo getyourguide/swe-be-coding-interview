@@ -12,22 +12,11 @@
     "vscode": {
       "extensions": [
         "vscjava.vscode-java-pack",
-        "vscjava.vscode-java-debug",
-        "vmware.vscode-boot-dev-pack",
-        "gabrielbb.vscode-lombok",
-        "vscjava.vscode-gradle",
-        "ms-vscode.vscode-json",
-        "redhat.vscode-yaml"
+        "vmware.vscode-boot-dev-pack"
       ],
       "settings": {
         "java.configuration.updateBuildConfiguration": "automatic",
-        "java.compile.nullAnalysis.mode": "automatic",
-        "spring-boot.ls.checkjvm": false,
-        "terminal.integrated.defaultProfile.linux": "bash",
-        "java.debug.settings.enableRunDebugCodeLens": true,
-        "java.debug.logLevel": "FINE",
-        "debug.allowBreakpointsEverywhere": true,
-        "debug.openDebug": "neverOpen"
+        "debug.allowBreakpointsEverywhere": true
       }
     }
   },
@@ -44,16 +33,12 @@
     }
   },
 
-  "postCreateCommand": "chmod +x ./gradlew && ./gradlew build --no-daemon --parallel",
-  "postStartCommand": "echo 'Codespace ready! Run ./gradlew bootRun to start the application'",
-
-  "remoteUser": "vscode",
-  
   "containerEnv": {
     "JAVA_TOOL_OPTIONS": "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
   },
+
+  "postCreateCommand": "chmod +x ./gradlew",
+  "postStartCommand": "echo 'Codespace ready! Run ./gradlew bootRun to start the application'",
   
-  "init": true,
-  "privileged": false,
-  "overrideCommand": false
+  "remoteUser": "vscode"
 } 
