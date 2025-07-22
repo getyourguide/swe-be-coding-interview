@@ -33,9 +33,5 @@
   "postCreateCommand": "chmod +x ./gradlew && ./gradlew build",
   "postStartCommand": "echo 'Codespace ready! Run ./gradlew bootRun to start the application'",
 
-  "remoteUser": "vscode",
-  
-  "mounts": [
-    "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"
-  ]
+  "remoteUser": "vscode"
 } 
