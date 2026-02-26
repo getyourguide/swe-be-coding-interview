@@ -25,3 +25,6 @@
 You are welcome to use any IDE of your preference to run the application. As long as you are able to execute the application, access its endpoints, and utilize a debugger if necessary, we support the use of any IDE that meets these requirements. Please bear in mind that your interviewer may not be familiar with your IDE, so may not be able to support you as effectively during the interview if necessary.
 
 The application endpoints will be accessible on `http://localhost:8080/`.
+
+## Documentation
+* [Known Issues & Technical Debt](docs/ISSUES.md) - Prioritized list of project issues

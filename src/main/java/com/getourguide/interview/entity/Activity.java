@@ -13,8 +13,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
 
 @Getter
 @Setter
@@ -34,7 +32,6 @@ public class Activity {
     private double rating;
     private boolean specialOffer;
     @ManyToOne(fetch = FetchType.LAZY)
-    @NotFound(action = NotFoundAction.IGNORE)
     @ToString.Exclude
     private Supplier supplier;
 }

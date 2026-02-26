@@ -1,5 +1,6 @@
 package com.getourguide.interview.service;
 
+import com.getourguide.interview.entity.Supplier;
 import com.getourguide.interview.repository.StatisticsRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class StatisticsService {
     private final StatisticsRepository statisticsRepository;
 
-    public List<Object[]> getSupplierStats() {
-        return statisticsRepository.getSupplierStats();
+    public List<Supplier> getSupplierStats() {
+        return statisticsRepository.findAll();
     }
 }
