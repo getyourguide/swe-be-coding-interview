@@ -7,6 +7,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import lombok.AllArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,7 +18,7 @@ public class CheckoutService {
     private final OrderRepository orderRepository;
 
     @Transactional
-    public void checkout(Long orderId) throws Exception {
+    public void checkout(Long orderId) {
         Order order = orderRepository.findById(orderId).orElseThrow();
         order.setStatus("RESERVED");
         orderRepository.save(order);
@@ -26,7 +27,8 @@ public class CheckoutService {
         sendConfirmationEmail(order);
     }
 
-    private void chargeCustomer(Order order) throws Exception {
+    @SneakyThrows
+    void chargeCustomer(Order order) {
 
         String body = """
             {"orderId": %d, "amount": %s}
@@ -41,14 +43,15 @@ public class CheckoutService {
         HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
     }
 
-    private void sendConfirmationEmail(Order order) throws Exception {
+    @SneakyThrows
+    void sendConfirmationEmail(Order order) {
 
         String body = """
             {"orderId": %d, "bookingReference": "%s"}
             """.formatted(order.getId(), order.getBookingReference());
 
         HttpRequest request = HttpRequest.newBuilder()
-            .uri(URI.create("http://localhost:8082/emails/confirmation"))
+            .uri(URI.create("http://localhost:8081/emails/confirmation"))
             .header("Content-Type", "application/json")
             .POST(HttpRequest.BodyPublishers.ofString(body))
             .build();
